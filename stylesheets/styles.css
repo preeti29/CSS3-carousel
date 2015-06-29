@@ -1,0 +1,156 @@
+/* Here's where our carousel begins, with the main wrapper being
+relatively positioned, so that our absolutely positioned items are
+in the right place. */
+/* line 4, ../sass/styles.scss */
+.carousel-wrapper {
+  position: relative;
+  height: 307px;
+  width: 760px;
+  margin: auto;
+  /* Our absolutely positioned carousel items span the width and
+  height of its parent. We're making them transparent by default so
+  that they fade in when we cycle through them using the arrow links. */
+  /* Let's set our jump link targets display: none; so that we're not
+  making the browser jump to the top of the carousel whenever a user
+  clicks on one of our arrow links. This attribute selector will target
+  any element whose id starts with 'target-item'. */
+  /* So, up above we made all our carousel items transparent, which means
+  that on page-load, we'd have a big empty box where our carousel should be.
+  Let's set our first item's opacity to 1 so that it displays instead. Also,
+  we're setting its z-index to 2, so that it's positioned on top of the
+  other carousel items. */
+  /* But we don't want the first item to ALAWYS be opacity: 1; otherwise
+  it would peek through when cycling between items two and above. */
+  /* ...but if #target-item-1 is targeted, well we do want the first item
+  to show up, so we're selecting it with the ~ sibling selector and
+  setting its opacity to 1 again :-) */
+  /* If any other target-item-# is targeted, let's select it using the sibling
+  selector, make it fade in, and place it on top of the pile using z-index: 3.
+  Here's where you'd add more target items if your carousel has more than three
+  items. It might be worth adding like 10 items right off the bat. */
+}
+/* line 13, ../sass/styles.scss */
+.carousel-wrapper .carousel-item {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 25px 50px;
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+  border-radius: 10px;
+  /* Did you notice the 50px left, right padding up above? It's so
+  we can position our arrow links! Each one will be 50px wide. Also,
+  I'm using empty links with a background image so that the links
+  look like arrows. Make sure you swap out that URL with an actual
+  URL so that your arrow links aren't just transparent rectangles. */
+  /* I really like how these carousel items look on a dark image
+  background, so if a .carousel-item div has the class 'light',
+  we'll make its text color white, and use a white arrow instad of
+  a dark gray one. Again, make sure this arrow image exists somewhere */
+  /* Let's use using some media queries to resize the arrows
+  on smaller devices.*/
+}
+/* line 29, ../sass/styles.scss */
+.carousel-wrapper .carousel-item .arrow {
+  position: absolute;
+  top: 0;
+  display: block;
+  width: 50px;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background: url("../images/left-arrow.png") 50% 50%/50px no-repeat;
+  /* Let's put our arrow to go back on the left. */
+  /* And our arrow to go forward on the right. Since I'm using
+  the same arrow image for both my arrows, I'm rotating this one by
+  180 degrees so that it points in the right direction */
+}
+/* line 39, ../sass/styles.scss */
+.carousel-wrapper .carousel-item .arrow.arrow-prev {
+  left: 10px;
+}
+/* line 46, ../sass/styles.scss */
+.carousel-wrapper .carousel-item .arrow.arrow-next {
+  right: 10px;
+  -webkit-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+/* line 57, ../sass/styles.scss */
+.carousel-wrapper .carousel-item.light {
+  color: white;
+}
+/* line 60, ../sass/styles.scss */
+.carousel-wrapper .carousel-item.light .arrow {
+  background: url("../images/left-arrow.png") 50% 50%/50px no-repeat;
+}
+@media (max-width: 480px) {
+  /* line 68, ../sass/styles.scss */
+  .carousel-wrapper .carousel-item .arrow, .carousel-wrapper .carousel-item.light .arrow {
+    background-size: 75%;
+    background-position: 10px 50%;
+  }
+}
+/* line 79, ../sass/styles.scss */
+.carousel-wrapper [id^="target-item"] {
+  display: none;
+}
+/* line 88, ../sass/styles.scss */
+.carousel-wrapper .item-1 {
+  z-index: 2;
+  opacity: 1;
+  background: url("../images/banner1.jpg") no-repeat scroll 100%;
+}
+/* line 94, ../sass/styles.scss */
+.carousel-wrapper .item-2 {
+  background: url("../images/banner2.jpg") no-repeat scroll 100%;
+}
+/* line 95, ../sass/styles.scss */
+.carousel-wrapper .item-3 {
+  background: url("../images/banner3.jpg") no-repeat scroll 100%;
+}
+/* line 96, ../sass/styles.scss */
+.carousel-wrapper .item-4 {
+  background: url("../images/banner4.jpg") no-repeat scroll 100%;
+}
+/* line 97, ../sass/styles.scss */
+.carousel-wrapper .item-5 {
+  background: url("../images/banner5.jpg") no-repeat scroll 100%;
+}
+/* line 101, ../sass/styles.scss */
+.carousel-wrapper h2 {
+  color: #fff;
+}
+/* line 102, ../sass/styles.scss */
+.carousel-wrapper p {
+  color: #fff;
+  margin: 0;
+}
+/* line 107, ../sass/styles.scss */
+.carousel-wrapper *:target ~ .item-1 {
+  opacity: 0;
+}
+/* line 114, ../sass/styles.scss */
+.carousel-wrapper #target-item-1:target ~ .item-1 {
+  opacity: 1;
+}
+/* line 122, ../sass/styles.scss */
+.carousel-wrapper #target-item-2:target ~ .item-2, .carousel-wrapper #target-item-3:target ~ .item-3, .carousel-wrapper #target-item-4:target ~ .item-4, .carousel-wrapper #target-item-5:target ~ .item-5 {
+  z-index: 3;
+  opacity: 1;
+}
+/* line 127, ../sass/styles.scss */
+.carousel-wrapper img {
+  max-width: 100%;
+}
+/* line 129, ../sass/styles.scss */
+.carousel-wrapper .banner-text {
+  background: url("../images/transparent-bg.png") 0 0 repeat;
+}
+
+@media only screen and (max-width: 760px) {
+  /* line 133, ../sass/styles.scss */
+  .carousel-wrapper {
+    width: 100%;
+  }
+}
