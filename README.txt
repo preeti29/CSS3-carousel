@@ -1,6 +1,6 @@
-The structure of our carousel goes something like this: We have a main div.carousel-wrapper that gives our carousel its size. Inside our wrapper, we have span.hidden-target elements with unique IDs that act as targets for our carousel items controls, and div.carousel-item elements that hold the content of each of our carousel items.
+Simple slider using HTML and CSS3 
 
-Each of our div.carousel-item elements have some content within them, and two links, a.arrow-prev and a.arrow-next, which we use to cycle between the carousel items.
+No required javascript and jQuery
 
 Steps how to make simple slider
 
